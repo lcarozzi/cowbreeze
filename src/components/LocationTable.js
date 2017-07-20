@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import TableRow from './TableRow'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import TableRow from './TableRow';
 
 class LocationTable extends Component {
   render() {
@@ -13,11 +14,15 @@ class LocationTable extends Component {
         </thead>
         <tbody>
           {this.props.locations.map((location, index) =>
-            <TableRow key={index} location={location.location} quality={location.quality}/>
+            <TableRow key={index} location={location.location} quality={location.quality} />,
           )}
         </tbody>
       </table>);
   }
 }
 
-export default LocationTable
+LocationTable.propTypes = {
+  locations: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+};
+
+export default LocationTable;

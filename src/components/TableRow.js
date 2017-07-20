@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TableRow extends Component {
   render() {
@@ -11,4 +12,9 @@ class TableRow extends Component {
   }
 }
 
-export default TableRow
+TableRow.propTypes = {
+  location: PropTypes.string.isRequired,
+  quality: PropTypes.string.isRequired,
+};
+
+export default TableRow;

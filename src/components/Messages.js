@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Messages extends Component {
   render() {
-    const { isFetching, failed, description } = this.props
-    if (isFetching)
-      return (<div>'Loading...'</div>)
-    else {
-        if (failed)
-          return (<div>{description.message}</div>)
-        else {
-            return (<div></div>)
-          }
-      }
+    const { isFetching, failed, description } = this.props;
+    if (isFetching) return (<div>{'Loading...'}</div>);
+    if (!failed) return null;
+    return (<div>{description.message}</div>);
   }
 }
 
-export default Messages
+Messages.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  failed: PropTypes.bool.isRequired,
+  description: PropTypes.string.isRequired,
+};
+
+export default Messages;

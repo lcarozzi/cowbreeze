@@ -1,16 +1,22 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import { Provider } from 'react-redux'
-import App from './containers/App'
-import cowBreezeApp from './reducers'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import LocationTable from './containers/LocationTable';
+import LocationAirQuality from './containers/LocationAirQuality';
+import Messages from './containers/Messages';
+import cowBreezeApp from './reducers';
 
-const middleware = [ thunk ];
+const middleware = [thunk];
 
 ReactDOM.render(
   <Provider store={createStore(cowBreezeApp, applyMiddleware(...middleware))}>
-    <App />
+    <div>
+      <LocationAirQuality />
+      <Messages />
+      <LocationTable />
+    </div>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
